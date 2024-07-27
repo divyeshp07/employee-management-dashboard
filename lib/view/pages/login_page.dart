@@ -1,4 +1,5 @@
 import 'package:employee_management_dashboard/controller/auth_controller.dart';
+import 'package:employee_management_dashboard/view/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,14 +19,14 @@ class LoginPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextField(
+            TextFeildWdget(
               controller: emailController,
-              decoration: const InputDecoration(labelText: "Email"),
+              labeltxt: 'Email',
             ),
-            TextField(
+            TextFeildWdget(
               controller: passwordController,
-              decoration: const InputDecoration(labelText: "Password"),
-              obscureText: true,
+              labeltxt: 'Password',
+              obscuretxt: true,
             ),
             const SizedBox(height: 20),
             ElevatedButton(

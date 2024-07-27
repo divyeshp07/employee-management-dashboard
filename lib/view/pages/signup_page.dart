@@ -18,14 +18,14 @@ class SignUpPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextField(
+            TextFeildWdget(
               controller: emailController,
-              decoration: const InputDecoration(labelText: "Email"),
+              labeltxt: 'Email',
             ),
-            TextField(
+            TextFeildWdget(
               controller: passwordController,
-              decoration: const InputDecoration(labelText: "Password"),
-              obscureText: true,
+              labeltxt: 'Password',
+              obscuretxt: true,
             ),
             const SizedBox(height: 20),
             ElevatedButton(
@@ -44,6 +44,28 @@ class SignUpPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class TextFeildWdget extends StatelessWidget {
+  final TextEditingController controller;
+  final String labeltxt;
+  final bool? obscuretxt;
+
+  const TextFeildWdget({
+    super.key,
+    required this.controller,
+    required this.labeltxt,
+    this.obscuretxt = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(labelText: labeltxt),
+      obscureText: obscuretxt!,
     );
   }
 }
