@@ -28,8 +28,9 @@ class AuthController extends GetxController {
       if (user != null) {
         isSignedIn.value = true;
       }
+      Get.snackbar('account created', 'success');
     } catch (e) {
-      Get.snackbar("Error", e.toString());
+      Get.snackbar("error", e.toString());
     }
   }
 
@@ -40,7 +41,7 @@ class AuthController extends GetxController {
         isSignedIn.value = true;
       }
     } catch (e) {
-      Get.snackbar("Error", e.toString());
+      Get.snackbar("error", e.toString());
     }
   }
 
