@@ -2,17 +2,17 @@ import 'package:employee_management_dashboard/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginPage extends StatelessWidget {
+class SignUpPage extends StatelessWidget {
   final AuthController authController = Get.find<AuthController>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  LoginPage({super.key});
+  SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Login")),
+      appBar: AppBar(title: Text("Sign Up")),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
@@ -29,16 +29,16 @@ class LoginPage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                authController.signIn(
+                authController.signUp(
                     emailController.text, passwordController.text);
               },
-              child: Text("Login"),
+              child: Text("Sign Up"),
             ),
             TextButton(
               onPressed: () {
-                Get.toNamed('/signup');
+                Get.toNamed('/');
               },
-              child: Text("Don't have an account? Sign up"),
+              child: Text("Already have an account? Login"),
             ),
           ],
         ),

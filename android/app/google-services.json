@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "193829108580",
+    "project_id": "employee-management-dash-8a92f",
+    "storage_bucket": "employee-management-dash-8a92f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193829108580:android:656fd2d38c6d00f92d9871",
+        "android_client_info": {
+          "package_name": "com.example.employee_management_dashboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMONhMFDM-0HttDgBQ9xPRGrapAFJcx34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
