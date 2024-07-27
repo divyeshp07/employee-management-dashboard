@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       title: 'Employee Management Dashboard',
       theme: ThemeData.dark(),
       initialBinding: AppBindings(),
-      initialRoute: '/',
+      // initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => LoginPage()),
         GetPage(name: '/signup', page: () => SignUpPage()),

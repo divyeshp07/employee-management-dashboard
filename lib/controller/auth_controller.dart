@@ -16,6 +16,7 @@ class AuthController extends GetxController {
 
   void handleAuthChanged(bool isLoggedIn) {
     if (isLoggedIn) {
+      Get.testMode = true;
       Get.offAllNamed('/home');
     } else {
       Get.offAllNamed('/');
@@ -26,11 +27,14 @@ class AuthController extends GetxController {
     try {
       User? user = await _authService.signUp(email, password);
       if (user != null) {
-        isSignedIn.value = true;
+        Get.snackbar("success", "account created successfully",
+            snackPosition: SnackPosition.BOTTOM);
+        Get.toNamed('/');
       }
-      Get.snackbar('account created', 'success');
     } catch (e) {
-      Get.snackbar("error", e.toString());
+      print("signup error$e");
+      Get.snackbar("signup error", e.toString(),
+          snackPosition: SnackPosition.BOTTOM);
     }
   }
 
@@ -39,9 +43,12 @@ class AuthController extends GetxController {
       User? user = await _authService.signIn(email, password);
       if (user != null) {
         isSignedIn.value = true;
+        Get.toNamed('/home');
       }
     } catch (e) {
-      Get.snackbar("error", e.toString());
+      print("signin error: $e");
+      Get.snackbar("signinerror", "please check your credentials",
+          snackPosition: SnackPosition.BOTTOM);
     }
   }
 
