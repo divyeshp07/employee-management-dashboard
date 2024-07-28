@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Employee Management Dashboard',
-      theme: ThemeData.light(),
+      theme: ThemeData.dark(),
       initialBinding: AppBindings(),
       initialRoute: '/',
       getPages: [
