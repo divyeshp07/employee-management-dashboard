@@ -77,7 +77,11 @@ class HomePage extends StatelessWidget {
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
+                    IconButton(
+                        onPressed: () {
+                          Get.toNamed('/updateemployee', arguments: employee);
+                        },
+                        icon: const Icon(Icons.edit)),
                     IconButton(
                       onPressed: () {},
                       icon: const Icon(
@@ -93,7 +97,9 @@ class HomePage extends StatelessWidget {
         );
       }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed('/createemployee');
+        },
         child: const Icon(Icons.add),
       ),
     );

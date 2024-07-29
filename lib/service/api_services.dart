@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:employee_management_dashboard/model/employee_model.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
@@ -32,6 +33,41 @@ class ApiService {
       }
     } catch (e) {
       throw Exception('failed to load employee${e.toString()}');
+    }
+  }
+
+// creating employee
+// TODO
+  Future<void> createEmployee(Employee employee) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl/employees'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(employee.toJson()),
+      );
+      if (response.statusCode != 201) {
+        print(response.body);
+        throw Exception('Failed to create employee');
+      }
+    } catch (e) {
+      throw Exception('Error creating employee: $e');
+    }
+  }
+
+// UPDATTE EMPLOYEE
+// TODO
+  Future<void> updateEmployee(Employee employee) async {
+    try {
+      final response = await http.put(
+        Uri.parse('$baseUrl/employees/${employee.id}'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(employee.toJson()),
+      );
+      if (response.statusCode != 200) {
+        throw Exception('Failed to update employee');
+      }
+    } catch (e) {
+      throw Exception('Error updating employee: $e');
     }
   }
 }

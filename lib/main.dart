@@ -1,9 +1,11 @@
 import 'package:employee_management_dashboard/binding.dart';
 import 'package:employee_management_dashboard/firebase_options.dart';
+import 'package:employee_management_dashboard/view/pages/create_employee_page.dart';
 import 'package:employee_management_dashboard/view/pages/home_page.dart';
 import 'package:employee_management_dashboard/view/pages/login_page.dart';
 import 'package:employee_management_dashboard/view/pages/search_page.dart';
 import 'package:employee_management_dashboard/view/pages/signup_page.dart';
+import 'package:employee_management_dashboard/view/pages/update_employe_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -35,6 +37,10 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/signup', page: () => SignUpPage()),
         GetPage(name: '/home', page: () => HomePage()),
         GetPage(name: '/search', page: () => SearchPage()),
+        GetPage(name: '/createemployee', page: () => CreateEmployeePage()),
+        GetPage(
+            name: '/updateemployee',
+            page: () => UpdateEmployeePage(employee: Get.arguments)),
       ],
     );
   }

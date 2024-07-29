@@ -40,4 +40,36 @@ class EmployeeController extends GetxController {
       isLoading(false);
     }
   }
+
+// TODO
+  void createEmployee(Employee employee) async {
+    try {
+      isLoading(true);
+      await apiService.createEmployee(employee);
+      employees.add(employee);
+      Get.snackbar('Success', 'Employee created successfully');
+      print('object');
+    } catch (e) {
+      Get.snackbar('Error', 'Failed to create employee: $e');
+    } finally {
+      isLoading(false);
+    }
+  }
+
+// TODO
+  void updateEmployee(Employee employee) async {
+    try {
+      isLoading(true);
+      await apiService.updateEmployee(employee);
+      var index = employees.indexWhere((e) => e.id == employee.id);
+      if (index != -1) {
+        employees[index] = employee;
+        Get.snackbar('Success', 'Employee updated successfully');
+      }
+    } catch (e) {
+      Get.snackbar('Error', 'Failed to update employee: $e');
+    } finally {
+      isLoading(false);
+    }
+  }
 }
