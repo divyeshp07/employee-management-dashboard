@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
   final AuthController authController = Get.find<AuthController>();
   final EmployeeController employeeController = Get.put(EmployeeController());
+  final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,12 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Employees'),
         actions: [
+          IconButton(
+            onPressed: () {
+              Get.toNamed('/search');
+            },
+            icon: const Icon(Icons.search),
+          ),
           IconButton(
             onPressed: () {
               authController.signOut();
@@ -27,7 +34,7 @@ class HomePage extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
         if (employeeController.employees.isEmpty) {
-          return const Center(child: Text('No employees found'));
+          return const Center(child: Text('no employees found'));
         }
         return ListView.builder(
           padding: const EdgeInsets.all(16.0),
@@ -58,11 +65,13 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Age: ${employee.employeeAge}',
+                      'Age:${employee.employeeAge}',
                       style: TextStyle(color: Colors.grey[600]),
                     ),
-                    Text('Salary: ${employee.employeeSalary}',
-                        style: TextStyle(color: Colors.grey[600]))
+                    Text(
+                      'Salary:${employee.employeeSalary}',
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
                   ],
                 ),
                 trailing: Row(
@@ -70,11 +79,12 @@ class HomePage extends StatelessWidget {
                   children: [
                     IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
                     IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.delete,
-                          color: Colors.red,
-                        )),
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
+                    ),
                   ],
                 ),
               ),

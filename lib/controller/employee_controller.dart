@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 class EmployeeController extends GetxController {
   var employees = <Employee>[].obs;
   var isLoading = true.obs;
+  var employeeDetails = Rxn<Employee>();
 
   final ApiService apiService = ApiService();
 
@@ -21,7 +22,20 @@ class EmployeeController extends GetxController {
       employees.assignAll(
           employeeList.map((data) => Employee.fromJson(data)).toList());
     } catch (e) {
-      Get.snackbar('Error', e.toString());
+      Get.snackbar('error', e.toString());
+    } finally {
+      isLoading(false);
+    }
+  }
+
+  void fetchEmployeeByid(int id) async {
+    try {
+      isLoading(true);
+      var employeeData = await apiService.fetchEmployeeByid(id);
+      employees[employees.indexWhere((e) => e.id == id)] =
+          Employee.fromJson(employeeData);
+    } catch (e) {
+      Get.snackbar('error', e.toString());
     } finally {
       isLoading(false);
     }

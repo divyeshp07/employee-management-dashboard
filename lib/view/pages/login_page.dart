@@ -5,8 +5,10 @@ import 'package:get/get.dart';
 
 class LoginPage extends StatelessWidget {
   final AuthController authController = Get.find<AuthController>();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController emailController =
+      TextEditingController(text: 'debs@gmail.com');
+  final TextEditingController passwordController =
+      TextEditingController(text: 'debs@123');
 
   LoginPage({super.key});
 
