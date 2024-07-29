@@ -47,10 +47,10 @@ class ApiService {
       );
       if (response.statusCode != 201) {
         print(response.body);
-        throw Exception('Failed to create employee');
+        throw Exception('failed to create employee');
       }
     } catch (e) {
-      throw Exception('Error creating employee: $e');
+      throw Exception('error creating employee $e');
     }
   }
 
@@ -64,10 +64,18 @@ class ApiService {
         body: jsonEncode(employee.toJson()),
       );
       if (response.statusCode != 200) {
-        throw Exception('Failed to update employee');
+        throw Exception('failed to update employee');
       }
     } catch (e) {
-      throw Exception('Error updating employee: $e');
+      throw Exception('error updating employee $e');
+    }
+  }
+
+// Delete employe
+  Future<void> deleteEmployee(int id) async {
+    final response = await http.delete(Uri.parse('$baseUrl/employees/$id'));
+    if (response.statusCode != 200) {
+      throw Exception('failed to delete employee');
     }
   }
 }

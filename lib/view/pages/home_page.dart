@@ -83,7 +83,10 @@ class HomePage extends StatelessWidget {
                         },
                         icon: const Icon(Icons.edit)),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        employeeController.apiService
+                            .deleteEmployee(employee.id);
+                      },
                       icon: const Icon(
                         Icons.delete,
                         color: Colors.red,

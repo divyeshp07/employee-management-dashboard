@@ -47,10 +47,10 @@ class EmployeeController extends GetxController {
       isLoading(true);
       await apiService.createEmployee(employee);
       employees.add(employee);
-      Get.snackbar('Success', 'Employee created successfully');
+      Get.snackbar('success', 'employee created ');
       print('object');
     } catch (e) {
-      Get.snackbar('Error', 'Failed to create employee: $e');
+      Get.snackbar('error', 'Failed to create $e');
     } finally {
       isLoading(false);
     }
@@ -64,10 +64,23 @@ class EmployeeController extends GetxController {
       var index = employees.indexWhere((e) => e.id == employee.id);
       if (index != -1) {
         employees[index] = employee;
-        Get.snackbar('Success', 'Employee updated successfully');
+        Get.snackbar('duccess', 'employee updated ');
       }
     } catch (e) {
-      Get.snackbar('Error', 'Failed to update employee: $e');
+      Get.snackbar('error', 'failed to update$e');
+    } finally {
+      isLoading(false);
+    }
+  }
+
+  void deleteEmployee(int id) async {
+    try {
+      isLoading(true);
+      await apiService.deleteEmployee(id);
+      employees.removeWhere((e) => e.id == id);
+      Get.snackbar('success', 'Employee deleted ');
+    } catch (e) {
+      Get.snackbar('error', 'failed to delete$e');
     } finally {
       isLoading(false);
     }
