@@ -1,6 +1,53 @@
 # employee_management_dashboard
 
-A new Flutter project.
+This project is a web-based Employee Management Dashboard built using Flutter and GetX for state management. It includes features for employee CRUD (Create, Read, Update, Delete) operations using a REST API and Firebase for authentication.
+
+Features
+User Authentication using Firebase
+Create, Read, Update, and Delete Employees
+Search Employees by ID
+Responsive design for different screen sizes
+Error handling and feedback using GetX
+
+
+Setup Instructions
+Prerequisites
+Flutter SDK (>=2.0.0)
+Firebase account
+REST API for employee management
+
+
+Clone the Repository:********
+
+install dependencies /(flutter pub get)
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get
+  firebase_core
+  firebase_auth
+  http
+  flutter_localizations:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner
+
+Usage Instructions
+Authentication
+Login: Users can log in using their email and password.
+Signup: New users can create an account.
+Logout: Users can log out from the application.
+Employee Management
+View Employees: The home page displays a list of all employees.
+Search Employees: Use the search icon in the app bar to search for an employee by ID.
+Add Employee: Click the "+" button to navigate to the create employee page.
+Update Employee: Click the edit icon on an employee card to update their details.
+Delete Employee: Click the delete icon on an employee card to remove them.
+
 
 ## Getting Started
 
