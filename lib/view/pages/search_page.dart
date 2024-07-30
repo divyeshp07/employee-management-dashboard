@@ -17,13 +17,10 @@ class SearchPage extends StatelessWidget {
         body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(children: [
-              TextField(
-                controller: searchController,
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                  hintText: 'Enter ID',
-                  border: OutlineInputBorder(),
-                ),
+              MainTxtFeild(
+                searchController: searchController,
+                hinttxt: 'enter Id',
+                textInputType: TextInputType.number,
               ),
               const SizedBox(height: 20),
               ElevatedButton(
@@ -86,5 +83,30 @@ class SearchPage extends StatelessWidget {
                 );
               }),
             ])));
+  }
+}
+
+class MainTxtFeild extends StatelessWidget {
+  const MainTxtFeild({
+    super.key,
+    required this.searchController,
+    this.textInputType,
+    required this.hinttxt,
+  });
+
+  final TextEditingController searchController;
+  final TextInputType? textInputType;
+  final String hinttxt;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: searchController,
+      keyboardType: textInputType,
+      decoration: InputDecoration(
+        hintText: hinttxt,
+        border: OutlineInputBorder(),
+      ),
+    );
   }
 }

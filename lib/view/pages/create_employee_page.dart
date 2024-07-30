@@ -1,9 +1,9 @@
 import 'package:employee_management_dashboard/model/employee_model.dart';
+import 'package:employee_management_dashboard/view/pages/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:employee_management_dashboard/controller/employee_controller.dart';
 
-// TODO
 class CreateEmployeePage extends StatelessWidget {
   final EmployeeController employeeController = Get.put(EmployeeController());
   final TextEditingController nameController = TextEditingController();
@@ -22,30 +22,18 @@ class CreateEmployeePage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            TextField(
-              controller: nameController,
-              decoration: const InputDecoration(
-                labelText: 'Name',
-                border: OutlineInputBorder(),
-              ),
+            MainTxtFeild(searchController: nameController, hinttxt: 'name'),
+            const SizedBox(height: 20),
+            MainTxtFeild(
+              searchController: ageController,
+              hinttxt: 'age',
+              textInputType: TextInputType.number,
             ),
             const SizedBox(height: 20),
-            TextField(
-              controller: ageController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'Age',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: salaryController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'Salary',
-                border: OutlineInputBorder(),
-              ),
+            MainTxtFeild(
+              searchController: salaryController,
+              hinttxt: 'salary',
+              textInputType: TextInputType.number,
             ),
             const SizedBox(height: 20),
             ElevatedButton(
@@ -62,8 +50,9 @@ class CreateEmployeePage extends StatelessWidget {
                     employeeSalary: salary.toDouble(),
                   );
                   employeeController.createEmployee(newEmployee);
+                  Get.back();
                 } else {
-                  Get.snackbar('Error', 'Please fill all fields correctly');
+                  Get.snackbar('error', 'please check the feilds');
                 }
               },
               child: const Text('Create'),

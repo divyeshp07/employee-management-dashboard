@@ -1,5 +1,8 @@
 import 'package:employee_management_dashboard/controller/auth_controller.dart';
 import 'package:employee_management_dashboard/controller/employee_controller.dart';
+import 'package:employee_management_dashboard/screens/desktop/desktop_layout.dart';
+import 'package:employee_management_dashboard/screens/mobile_layout.dart';
+import 'package:employee_management_dashboard/screens/tablet/tablet_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +14,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Size size = MediaQuery.of(context).size;
+    // print(size);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Employees'),
@@ -29,81 +34,16 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Obx(() {
-        if (employeeController.isLoading.value) {
-          return const Center(child: CircularProgressIndicator());
-        }
-        if (employeeController.employees.isEmpty) {
-          return const Center(child: Text('no employees found'));
-        }
-        return ListView.builder(
-          padding: const EdgeInsets.all(16.0),
-          itemCount: employeeController.employees.length,
-          itemBuilder: (context, index) {
-            final employee = employeeController.employees[index];
-            return Card(
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              margin: const EdgeInsets.symmetric(vertical: 8.0),
-              child: ListTile(
-                contentPadding: const EdgeInsets.all(16.0),
-                leading: CircleAvatar(
-                  backgroundColor: Colors.blueAccent,
-                  child: Text(
-                    employee.employeeName[0].toUpperCase(),
-                    style: const TextStyle(color: Colors.white, fontSize: 24),
-                  ),
-                ),
-                title: Text(
-                  employee.employeeName,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Age:${employee.employeeAge}',
-                      style: TextStyle(color: Colors.grey[600]),
-                    ),
-                    Text(
-                      'Salary:${employee.employeeSalary}',
-                      style: TextStyle(color: Colors.grey[600]),
-                    ),
-                  ],
-                ),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          Get.toNamed('/updateemployee', arguments: employee);
-                        },
-                        icon: const Icon(Icons.edit)),
-                    IconButton(
-                      onPressed: () {
-                        employeeController.apiService
-                            .deleteEmployee(employee.id);
-                      },
-                      icon: const Icon(
-                        Icons.delete,
-                        color: Colors.red,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
-        );
-      }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Get.toNamed('/createemployee');
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth > 950) {
+            return DesktopLayout();
+          } else if (constraints.maxWidth > 600) {
+            return TabletLayout();
+          } else {
+            return MobileLayout();
+          }
         },
-        child: const Icon(Icons.add),
       ),
     );
   }

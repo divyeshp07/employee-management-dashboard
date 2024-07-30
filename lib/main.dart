@@ -1,5 +1,6 @@
 import 'package:employee_management_dashboard/binding.dart';
 import 'package:employee_management_dashboard/firebase_options.dart';
+import 'package:employee_management_dashboard/screens/desktop/create_employee_des.dart';
 import 'package:employee_management_dashboard/view/pages/create_employee_page.dart';
 import 'package:employee_management_dashboard/view/pages/home_page.dart';
 import 'package:employee_management_dashboard/view/pages/login_page.dart';
@@ -38,6 +39,9 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/home', page: () => HomePage()),
         GetPage(name: '/search', page: () => SearchPage()),
         GetPage(name: '/createemployee', page: () => CreateEmployeePage()),
+        GetPage(
+            name: '/createemployeedesk',
+            page: () => CreateEmployeePageDeskTop()),
         GetPage(
             name: '/updateemployee',
             page: () => UpdateEmployeePage(employee: Get.arguments)),
