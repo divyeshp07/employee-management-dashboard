@@ -6,7 +6,6 @@ import 'package:employee_management_dashboard/view/pages/login_page.dart';
 import 'package:employee_management_dashboard/view/pages/search_page.dart';
 import 'package:employee_management_dashboard/view/pages/signup_page.dart';
 import 'package:employee_management_dashboard/view/pages/update_employe_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -16,7 +15,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+  // await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
 
   runApp(const MyApp());
 }
