@@ -49,6 +49,10 @@ Update Employee: Click the edit icon on an employee card to update their details
 Delete Employee: Click the delete icon on an employee card to remove them.
 
 
+Project Console: https://console.firebase.google.com/project/employee-management-dash-8a92f/overview
+Hosting URL: https://employee-management-dash-8a92f-94a38.web.app
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
